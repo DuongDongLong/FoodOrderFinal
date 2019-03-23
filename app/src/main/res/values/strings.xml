@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">OrderFood</string>
+    <string name="home">Trang Chủ</string>
+    <string name="cart">Giỏ hàng</string>
+    <string name="notification">Thông báo</string>
+    <string name="category_empty">empty</string>
+    <string name="image_description">empty</string>
+    <string name="category">Categories</string>
+    <string name="menu">Menu</string>
+</resources>

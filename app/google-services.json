@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "765196163077",
+    "firebase_url": "https://smart-oder-food.firebaseio.com",
+    "project_id": "smart-oder-food",
+    "storage_bucket": "smart-oder-food.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:765196163077:android:e314b5db4af58ab4",
+        "android_client_info": {
+          "package_name": "com.framgia.orderfood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "765196163077-ol62jf9skp47qt6tr31644u645ihnv5i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.framgia.orderfood",
+            "certificate_hash": "0823e39d8f6c9dd309e9dc43680d2bedc75acd9f"
+          }
+        },
+        {
+          "client_id": "765196163077-7ucaov2jk4m6bealfhpi46ff9pnhheja.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdnW51-6FxDwk-pQCC1FDV0UuvEfC5vd0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "765196163077-7ucaov2jk4m6bealfhpi46ff9pnhheja.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
