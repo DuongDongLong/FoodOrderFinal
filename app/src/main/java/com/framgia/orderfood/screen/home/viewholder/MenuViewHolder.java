@@ -3,6 +3,7 @@ package com.framgia.orderfood.screen.home.viewholder;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,13 +14,17 @@ public class MenuViewHolder extends RecyclerView.ViewHolder implements View.OnCl
     public ImageView imageView;
     public TextView title,describe,price;
     private ItemClickListener itemClickListener;
+    private Button buttonAdd;
     public MenuViewHolder(@NonNull View itemView) {
         super(itemView);
-        title=itemView.findViewById(R.id.textViewFoodTitle);
+        title=itemView.findViewById(R.id.textViewCartFoodTitle);
         imageView=itemView.findViewById(R.id.imageViewMenuLayout);
-        describe=itemView.findViewById(R.id.textViewFoodDescribe);
+        describe=itemView.findViewById(R.id.textViewCartFoodPrice);
         price=itemView.findViewById(R.id.textViewFoodPrice);
+        buttonAdd=itemView.findViewById(R.id.buttonADD);
         itemView.setOnClickListener(this);
+        buttonAdd.setOnClickListener(this);
+
     }
 
     public void setItemClickListener(ItemClickListener itemClickListener) {
@@ -28,6 +33,9 @@ public class MenuViewHolder extends RecyclerView.ViewHolder implements View.OnCl
 
     @Override
     public void onClick(View v) {
-        itemClickListener.onClick(v,getAdapterPosition());
+        if (v.getId()==R.id.buttonADD)
+            itemClickListener.onClickAdd(v,getAdapterPosition());
+        else
+            itemClickListener.onClick(v,getAdapterPosition());
     }
 }
