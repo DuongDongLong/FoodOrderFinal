@@ -14,7 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.framgia.orderfood.screen.cart.CartFragment;
 import com.framgia.orderfood.R;
+import com.framgia.orderfood.data.model.Cart;
 import com.framgia.orderfood.data.model.Food;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,6 +33,7 @@ public class FoodDetailFragment extends Fragment implements View.OnClickListener
     private Button buttonAddCart;
     private CheckBox checkBoxHere,checkBoxHome;
     private final static String KEY_FOOD = "KEY_FOOD";
+    private Food food;
 
     final public static FoodDetailFragment newInstance(Food food) {
 
@@ -49,8 +52,8 @@ public class FoodDetailFragment extends Fragment implements View.OnClickListener
 
         view.findViewById(R.id.button_back_food_detail).setOnClickListener(this);
         textViewQuantity = view.findViewById(R.id.textViewQuantity);
-        minus = view.findViewById(R.id.image_circle_minus);
-        plus = view.findViewById(R.id.image_circle_plus);
+        minus = view.findViewById(R.id.image_circle_minus_cart);
+        plus = view.findViewById(R.id.image_circle_plus_cart);
         buttonAddCart = view.findViewById(R.id.button_add_cart_detail);
         textViewNameFood=view.findViewById(R.id.textViewNameFoodLayout);
         textViewDesFood=view.findViewById(R.id.textViewDesFoodLayout);
@@ -85,7 +88,7 @@ public class FoodDetailFragment extends Fragment implements View.OnClickListener
 
     private void initData(View view) {
         if (getArguments() != null) {
-            final Food food = getArguments().getParcelable(KEY_FOOD);
+            food = getArguments().getParcelable(KEY_FOOD);
             textViewNameFood.setText(food.getName());
             textViewDesFood.setText(food.getDescription());
             textViewPrice.setText("$"+food.getPrice());
@@ -111,16 +114,19 @@ public class FoodDetailFragment extends Fragment implements View.OnClickListener
             case R.id.button_back_food_detail:
                 getFragmentManager().popBackStack();
                 break;
-            case R.id.image_circle_minus:
+            case R.id.image_circle_minus_cart:
                 int quantity = Integer.parseInt(textViewQuantity.getText().toString());
                 if (quantity > 1)
                     textViewQuantity.setText((quantity - 1) + "");
                 break;
-            case R.id.image_circle_plus:
+            case R.id.image_circle_plus_cart:
                 textViewQuantity.setText((Integer.parseInt(textViewQuantity.getText().toString()) + 1) + "");
                 break;
             case R.id.button_add_cart_detail:
                 Toast.makeText(getActivity(), "Add to cart", Toast.LENGTH_SHORT).show();
+                Cart cart=new Cart(food,Integer.parseInt(textViewQuantity.getText().toString()));
+                CartFragment.cartList.add(cart);
+                getFragmentManager().popBackStack();
         }
     }
 }

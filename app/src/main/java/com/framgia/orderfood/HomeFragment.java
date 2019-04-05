@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -69,6 +70,12 @@ public class HomeFragment extends Fragment {
                         menuFragment.setArguments(b);
                         getFragmentManager().beginTransaction().replace(R.id.frame_menu, menuFragment).commit();
                     }
+
+                    @Override
+                    public void onClickAdd(View view, int position) {
+                        Toast.makeText(getActivity(),position,Toast.LENGTH_SHORT).show();
+                    }
+
                 });
             }
 

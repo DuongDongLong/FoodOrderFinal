@@ -70,10 +70,16 @@ public class TableActivity extends AppCompatActivity {
                             intent.putExtra("ID_TABLE", key);
                             databaseReference1.child(key).child("Status").setValue("1");
                             startActivity(intent);
+                            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 
                         } else {
                             Toast.makeText(getApplication(), "Ban da duoc su dung", Toast.LENGTH_SHORT).show();
                         }
+                    }
+
+                    @Override
+                    public void onClickAdd(View view, int position) {
+
                     }
                 });
             }
@@ -95,4 +101,6 @@ public class TableActivity extends AppCompatActivity {
         super.onStart();
         adapter1.startListening();
     }
+
+
 }

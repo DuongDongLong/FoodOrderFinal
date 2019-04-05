@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/view_foreground"
+        android:background="#ffffffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="100dp"
+            android:layout_marginStart="@dimen/dp_30"
+            app:cardCornerRadius="@dimen/dp_16"
+            app:cardElevation="0dp"
+            app:layout_constraintDimensionRatio="3:2.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageViewCartLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/image_description"
+                android:scaleType="centerCrop" />
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/textViewCartFoodTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="start"
+            android:layout_marginStart="@dimen/dp_8"
+            android:singleLine="true"
+            android:text="Name food"
+            android:textColor="#282A2D"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="158dp"
+            tools:ignore="MissingConstraints"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cardView"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/textViewCartFoodPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:paddingTop="@dimen/dp_8"
+            android:layout_marginStart="@dimen/dp_8"
+            android:singleLine="true"
+            android:text="230000d"
+            android:textColor="#FF1744"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cardView"
+            app:layout_constraintTop_toBottomOf="@id/textViewCartFoodTitle" />
+
+        <include
+            layout="@layout/course_layout_cart"
+            android:id="@+id/textViewFoodPrice"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="@dimen/dp_8"
+
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/buttonADD"
+            app:layout_constraintStart_toEndOf="@id/cardView" />
+
+        <Button
+            android:id="@+id/buttonAddCart"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:background="@drawable/custom_button"
+            android:ellipsize="start"
+            android:layout_marginEnd="@dimen/dp_8"
+            android:layout_marginStart="@dimen/dp_8"
+            android:singleLine="true"
+            android:text="delete"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/textViewFoodPrice" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>
