@@ -8,12 +8,14 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import com.framgia.orderfood.screen.cart.CartFragment;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener {
-
+    private DatabaseReference reference;
+    private String key;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,9 +24,9 @@ public class MainActivity extends AppCompatActivity
                 .replace(R.id.frame_container, new HomeFragment())
                 .commit();
         Intent intent=this.getIntent();
-        String key= intent.getStringExtra("ID_TABLE");
-        DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Table");
-       // reference.child(key).child("Status").setValue("0");
+        key= intent.getStringExtra("ID_TABLE");
+        reference=FirebaseDatabase.getInstance().getReference().child("Table");
+
         initView();
     }
 
@@ -51,5 +53,11 @@ public class MainActivity extends AppCompatActivity
                 .replace(R.id.frame_container, fragment)
                 .commit();
         return true;
+    }
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        reference.child(key).child("Status").setValue("1");
     }
 }

@@ -18,6 +18,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.database.SnapshotParser;
 import com.framgia.orderfood.data.model.Table;
+import com.framgia.orderfood.screen.cart.adapter.CartAdapter;
 import com.framgia.orderfood.screen.home.viewholder.TableViewHolder;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
@@ -68,12 +69,28 @@ public class TableActivity extends AppCompatActivity {
                             Intent intent = new Intent(TableActivity.this, MainActivity.class);
                             String key=adapter1.getRef(position).getKey();
                             intent.putExtra("ID_TABLE", key);
-                            databaseReference1.child(key).child("Status").setValue("1");
+                            databaseReference1.child(key).child("Status").setValue("0");
                             startActivity(intent);
+                            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 
                         } else {
                             Toast.makeText(getApplication(), "Ban da duoc su dung", Toast.LENGTH_SHORT).show();
                         }
+                    }
+
+                    @Override
+                    public void onClickAdd(View view, int position) {
+
+                    }
+
+                    @Override
+                    public void onClickPlus(CartAdapter.ViewHolder viewHolder, View view, int position) {
+
+                    }
+
+                    @Override
+                    public void onClickMinus(CartAdapter.ViewHolder viewHolder, View view, int position) {
+
                     }
                 });
             }
@@ -95,4 +112,6 @@ public class TableActivity extends AppCompatActivity {
         super.onStart();
         adapter1.startListening();
     }
+
+
 }

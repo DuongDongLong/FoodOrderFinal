@@ -10,14 +10,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.database.SnapshotParser;
+import com.framgia.orderfood.screen.cart.CartFragment;
 import com.framgia.orderfood.ItemClickListener;
 import com.framgia.orderfood.R;
+import com.framgia.orderfood.data.model.Cart;
 import com.framgia.orderfood.data.model.Food;
+import com.framgia.orderfood.screen.cart.adapter.CartAdapter;
 import com.framgia.orderfood.screen.home.viewholder.MenuViewHolder;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
@@ -64,7 +68,24 @@ public class MenuFragment extends Fragment {
                 holder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position) {
-                        getFragmentManager().beginTransaction().add(R.id.frame_main, FoodDetailFragment.newInstance(model)).addToBackStack(null).commit();
+                        getFragmentManager().beginTransaction().setCustomAnimations(R.anim.slide_in_right,R.anim.slide_out_left).add(R.id.frame_main, FoodDetailFragment.newInstance(model)).addToBackStack(null).commit();
+
+                    }
+
+                    @Override
+                    public void onClickAdd(View view, int position) {
+                        CartFragment.cartList.add(new Cart(model,1));
+                        Toast.makeText(getContext(),"Đã thêm "+model.getName()+" Vào giỏ hàng",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onClickPlus(CartAdapter.ViewHolder viewHolder, View view, int position) {
+
+                    }
+
+                    @Override
+                    public void onClickMinus(CartAdapter.ViewHolder viewHolder, View view, int position) {
+
                     }
                 });
             }

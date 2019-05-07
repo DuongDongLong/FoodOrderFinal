@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -16,6 +17,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.database.SnapshotParser;
 import com.framgia.orderfood.data.model.Category;
 import com.framgia.orderfood.screen.MenuFragment;
+import com.framgia.orderfood.screen.cart.adapter.CartAdapter;
 import com.framgia.orderfood.screen.home.viewholder.CategoryViewHolder;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
@@ -69,6 +71,22 @@ public class HomeFragment extends Fragment {
                         menuFragment.setArguments(b);
                         getFragmentManager().beginTransaction().replace(R.id.frame_menu, menuFragment).commit();
                     }
+
+                    @Override
+                    public void onClickAdd(View view, int position) {
+                        Toast.makeText(getActivity(),position,Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onClickPlus(CartAdapter.ViewHolder viewHolder, View view, int position) {
+
+                    }
+
+                    @Override
+                    public void onClickMinus(CartAdapter.ViewHolder viewHolder, View view, int position) {
+
+                    }
+
                 });
             }
 
