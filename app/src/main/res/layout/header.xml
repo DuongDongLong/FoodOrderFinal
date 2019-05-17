@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/color_background"
+    android:layout_height="180dp">
+    <TextView
+        android:text="Order food"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="@dimen/sp_24"
+        android:textColor="@color/colorTextNameTable"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

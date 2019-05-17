@@ -28,11 +28,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MenuFragment extends Fragment {
-    DatabaseReference databaseReference1;
     FirebaseRecyclerOptions<Food> options2;
     FirebaseRecyclerAdapter<Food, MenuViewHolder> adapter2;
     DatabaseReference databaseReference2;
     RecyclerView mRecyclerView2;
+    Food current;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -60,11 +60,12 @@ public class MenuFragment extends Fragment {
         adapter2= new FirebaseRecyclerAdapter<Food, MenuViewHolder>(options2) {
             @Override
             protected void onBindViewHolder(@NonNull MenuViewHolder holder, int position, @NonNull final Food model) {
-                Log.d("TAGG", "parseSnapshot: " + model.getPrice());
+
                 holder.title.setText(model.getName());
                 holder.describe.setText(model.getDescription());
                 holder.price.setText("$"+model.getPrice());
                 Glide.with(view).load(model.getImage()).into(holder.imageView);
+                current=model;
                 holder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position) {
@@ -74,7 +75,7 @@ public class MenuFragment extends Fragment {
 
                     @Override
                     public void onClickAdd(View view, int position) {
-                        CartFragment.cartList.add(new Cart(model,1));
+                        CartFragment.cartList.add(new Cart(current.getName(),current.getDescription(),current.getImage(),current.getDiscount(),current.getMenuId(),current.getPrice(),1));
                         Toast.makeText(getContext(),"Đã thêm "+model.getName()+" Vào giỏ hàng",Toast.LENGTH_SHORT).show();
                     }
 

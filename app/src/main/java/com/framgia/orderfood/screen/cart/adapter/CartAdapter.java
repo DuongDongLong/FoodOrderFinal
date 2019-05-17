@@ -79,12 +79,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         }
 
         void bindViewData(Cart cart) {
-            name.setText(cart.getFood().getName());
-            price.setText("$" + cart.getFood().getPrice());
-            quantity.setText(cart.getQuatity() + "");
-            double total = cart.getQuatity() * Double.parseDouble(cart.getFood().getPrice());
+            name.setText(cart.getName());
+            price.setText("$" + cart.getPrice());
+            quantity.setText(cart.getQuantity() + "");
+            double total = cart.getQuantity() * Double.parseDouble(cart.getPrice());
             totalItem.setText("$" + total);
-            Glide.with(itemView.getContext()).load(cart.getFood().getImage()).into(imageView);
+            Glide.with(itemView.getContext()).load(cart.getImage()).into(imageView);
         }
 
         @Override

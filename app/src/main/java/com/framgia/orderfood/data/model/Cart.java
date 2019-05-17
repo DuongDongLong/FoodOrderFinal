@@ -1,27 +1,77 @@
 package com.framgia.orderfood.data.model;
 
 public class Cart {
-    private Food food;
-    private int Quatity;
+    private String Name;
+    private String Description;
+    private String Image;
+    private String Discount;
+    private String MenuId;
+    private String Price;
+    private int Quantity;
 
-    public Cart(Food food, int quatity) {
-        this.food = food;
-        Quatity = quatity;
+    public Cart(String name, String description, String image, String discount, String menuId, String price, int quantity) {
+        Name = name;
+        Description = description;
+        Image = image;
+        Discount = discount;
+        MenuId = menuId;
+        Price = price;
+        Quantity = quantity;
     }
 
-    public Food getFood() {
-        return food;
+    public String getName() {
+        return Name;
     }
 
-    public void setFood(Food food) {
-        this.food = food;
+    public void setName(String name) {
+        Name = name;
     }
 
-    public int getQuatity() {
-        return Quatity;
+    public String getDescription() {
+        return Description;
     }
 
-    public void setQuatity(int quatity) {
-        Quatity = quatity;
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    public String getImage() {
+        return Image;
+    }
+
+    public void setImage(String image) {
+        Image = image;
+    }
+
+    public String getDiscount() {
+        return Discount;
+    }
+
+    public void setDiscount(String discount) {
+        Discount = discount;
+    }
+
+    public String getMenuId() {
+        return MenuId;
+    }
+
+    public void setMenuId(String menuId) {
+        MenuId = menuId;
+    }
+
+    public String getPrice() {
+        return Price;
+    }
+
+    public void setPrice(String price) {
+        Price = price;
+    }
+
+    public int getQuantity() {
+        return Quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        Quantity = quantity;
     }
 }

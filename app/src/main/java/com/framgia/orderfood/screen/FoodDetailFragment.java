@@ -34,7 +34,6 @@ public class FoodDetailFragment extends Fragment implements View.OnClickListener
     private CheckBox checkBoxHere,checkBoxHome;
     private final static String KEY_FOOD = "KEY_FOOD";
     private Food food;
-
     final public static FoodDetailFragment newInstance(Food food) {
 
         Bundle args = new Bundle();
@@ -131,9 +130,10 @@ public class FoodDetailFragment extends Fragment implements View.OnClickListener
                 break;
             case R.id.button_add_cart_detail:
                 Toast.makeText(getActivity(), "Đã thêm "+food.getName()+" vào giỏ hàng", Toast.LENGTH_SHORT).show();
-                Cart cart=new Cart(food,Integer.parseInt(textViewQuantity.getText().toString()));
+                Cart cart=new Cart(food.getName(),food.getDescription(),food.getImage(),food.getDiscount(),food.getMenuId(),food.getPrice(),Integer.parseInt(textViewQuantity.getText().toString()));
                 CartFragment.cartList.add(cart);
                 getFragmentManager().popBackStack();
+
         }
     }
 }

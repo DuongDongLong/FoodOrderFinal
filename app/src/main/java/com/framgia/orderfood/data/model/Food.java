@@ -10,8 +10,6 @@ public class Food implements Parcelable {
     String Discount;
     String MenuId;
     String Price;
-    public Food() {
-    }
 
     protected Food(Parcel in) {
         Name = in.readString();

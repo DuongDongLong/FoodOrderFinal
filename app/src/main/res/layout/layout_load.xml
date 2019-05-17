@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/backgroud_layout_load"
     android:orientation="horizontal"
+    
     >
     <TextView
         android:layout_weight="1"

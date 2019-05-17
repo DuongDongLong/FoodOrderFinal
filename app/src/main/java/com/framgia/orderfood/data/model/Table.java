@@ -7,10 +7,6 @@ public class Table {
         Name = name;
         Status = status;
     }
-
-    public Table() {
-    }
-
     public String getName() {
         return Name;
     }

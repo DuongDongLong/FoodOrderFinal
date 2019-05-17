@@ -1,7 +1,9 @@
 package com.framgia.orderfood;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -35,7 +37,7 @@ public class TableActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.table_activity);
-
+        getSupportFragmentManager().popBackStack();
         databaseReference1 = FirebaseDatabase.getInstance().getReference().child("Table");
         mRecyclerView = findViewById(R.id.recyclerViewTable);
         mRecyclerView.setHasFixedSize(true);
@@ -69,6 +71,7 @@ public class TableActivity extends AppCompatActivity {
                             Intent intent = new Intent(TableActivity.this, MainActivity.class);
                             String key=adapter1.getRef(position).getKey();
                             intent.putExtra("ID_TABLE", key);
+                            sharedPreferences(key);
                             databaseReference1.child(key).child("Status").setValue("0");
                             startActivity(intent);
                             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
@@ -111,6 +114,13 @@ public class TableActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         adapter1.startListening();
+    }
+    private void sharedPreferences(String table) {
+        SharedPreferences mSharedPreferences =
+                getSharedPreferences("db_app",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putString("TABLE",table);
+        editor.apply();
     }
 
 
